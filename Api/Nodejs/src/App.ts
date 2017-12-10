@@ -1,4 +1,6 @@
 import * as express from 'express'
+import * as bodyParser from 'body-parser'
+
 import Task from './Task'
 import TaskService from './TaskService'
 
@@ -8,6 +10,7 @@ class App{
 
   constructor(){
     this.express = express();
+    this.express.use(bodyParser.json());
     this.mountRoutes();
     this.taskService = new TaskService();
   }
@@ -18,6 +21,31 @@ class App{
     router.get('/', (req, res) =>{
       this.taskService.GetTasks((err, result) => {
         res.json(result);
+      });
+    });
+
+    router.post('/create', (req, res) => {
+      this.taskService.CreateTask(req.body.taskTitle, (err) => {
+        if(err){
+          res.status(500);
+          res.json({"Message": "Inernal Server Error"});
+        }else{
+          res.status(200);
+          res.send();
+        }
+      });
+    });
+
+    router.put('/edit', (req, res) => {
+      res.json({
+        "Message": "Not Implemented"
+      });
+    });
+
+    router.put('/close/:id', (req, res) => {
+      res.json({
+        "Message": "Not Implemented",
+        "ID": req.params.id
       });
     });
 

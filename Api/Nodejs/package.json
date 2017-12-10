@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@types/node": "^8.0.57",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mysql": "^2.15.0"
   },
