@@ -28,7 +28,7 @@ class App{
       this.taskService.CreateTask(req.body.taskTitle, (err) => {
         if(err){
           res.status(500);
-          res.json({"Message": "Inernal Server Error"});
+          res.json({"Message": "Internal Server Error"});
         }else{
           res.status(200);
           res.send();
@@ -37,15 +37,26 @@ class App{
     });
 
     router.put('/edit', (req, res) => {
-      res.json({
-        "Message": "Not Implemented"
+      this.taskService.UpdateTask(req.body.task, (err) => {
+        if(err){
+          res.status(500);
+          res.json({"Message": "Internal Server Error"});
+        }else{
+          res.status(200);
+          res.send();
+        }
       });
     });
 
     router.put('/close/:id', (req, res) => {
-      res.json({
-        "Message": "Not Implemented",
-        "ID": req.params.id
+      this.taskService.CloseTask(req.params.id, (err) => {
+        if(err){
+          res.status(500);
+          res.json({"Message": "Internal Server Error"});
+        }else{
+          res.status(200);
+          res.send();
+        }
       });
     });
 

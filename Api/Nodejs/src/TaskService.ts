@@ -14,16 +14,12 @@ export default class TaskService{
   }
 
   public GetTasks(callback:any):any{
-    this.connection.connect();
-
     this.connection.query('SELECT * FROM tasks', (error, results, fields) => {
       if(error)
         callback(error, null);
       else
         callback(null, results);
     });
-
-    this.connection.end();
   }
 
   public CreateTask(taskTitle:string, callback:any){
@@ -31,7 +27,19 @@ export default class TaskService{
     let inserts = [taskTitle];
     sql = mysql.format(sql, inserts);
 
-    this.connection.connect();
+    this.connection.query(sql, (error, results, fields) => {
+      if(error)
+        callback(error);
+      else
+        callback(null);
+    });
+  }
+
+  public UpdateTask(task:Task, callback:any){
+    let sql = "UPDATE tasks SET Title = ? WHERE TaskID = ?";
+    let inserts = [task.title, task.taskId];
+    sql = mysql.format(sql, inserts);
+
 
     this.connection.query(sql, (error, results, fields) => {
       if(error)
@@ -39,16 +47,19 @@ export default class TaskService{
       else
         callback(null);
     });
-
-    this.connection.end();
-  }
-
-  public UpdateTask(task:Task, callback:any){
-    console.log("Not implemented");
   }
 
   public CloseTask(taskID:number, callback:any){
-    console.log("Not implemented");
+    let sql = "UPDATE tasks SET Closed = 1 WHERE TaskID = ?"
+    let inserts = [taskID];
+    sql = mysql.format(sql, inserts);
+
+    this.connection.query(sql, (error, results, fields) => {
+      if(error)
+        callback(error);
+      else
+        callback(null);
+    });
   }
 
 }
