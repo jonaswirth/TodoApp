@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Todo-App</h1>
-    <p>{{msg}}</p>
+    <p v-for="task in tasks">{{task.Title}}</p>
   </div>
 </template>
 
@@ -9,12 +9,30 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-@Component({
+import Constants from './constants.ts';
+//import Task from './components/Task.vue';
 
+
+@Component({
+  /*components:{
+    Task
+  }*/
 })
 
-export default class App extends Vue {
-  msg: string = "Hello World! :)"
+export default class Task extends Vue {
+  msg: string = "Hello World!"
+  public tasks:any = [];
+
+  mounted(){
+    console.log(Constants.api);
+    this.axios.get(Constants.api)
+    .then((response) => {
+      this.tasks = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
 }
 </script>
 
