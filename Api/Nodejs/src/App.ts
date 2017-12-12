@@ -1,5 +1,6 @@
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
+import * as cors from 'cors'
 
 import Task from './Task'
 import TaskService from './TaskService'
@@ -17,6 +18,8 @@ class App{
 
   private mountRoutes():void{
     const router = express.Router()
+
+    router.all('*', cors());
 
     router.get('/', (req, res) =>{
       this.taskService.GetTasks((err, result) => {
