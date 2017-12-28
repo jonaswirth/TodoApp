@@ -27,7 +27,7 @@ task:Task;
 closeTask(){
   this.axios.put(Constants.api+"/close/"+this.task.TaskID)
   .then(() => {
-    console.log("success");
+    this.task.Closed = true;
   })
   .catch((error) =>{
     console.log("error: " + error);

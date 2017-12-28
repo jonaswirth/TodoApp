@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Todo-App</h1>
+    <input type="checkbox" name="ShowOnlyOpen" v-model="ShowOnlyOpen"> Only show open Tasks
     <!--<p v-for="task in tasks">{{task.Title}}</p>-->
     <taskComponent v-for="task in filteredTasks" :task="task"/>
   </div>
@@ -22,11 +23,7 @@ import TaskComponent from './components/Task.vue';
 
 export default class Task extends Vue {
   private tasks:any = [];
-  private filteredTasks:any = [];
-
-  private filterDefinition:any = {
-    ShowOnlyOpen: true
-  }
+  private ShowOnlyOpen:boolean = true;
 
 
   mounted(){
@@ -40,8 +37,11 @@ export default class Task extends Vue {
     })
   }
 
-  filterTasks(){
-    this.filteredTasks = this.tasks.filter((element, filter, array) => {
+  get filteredTasks():any {
+    if(!this.ShowOnlyOpen)
+      return this.tasks;
+
+    return this.tasks.filter((element, filter, array) => {
       return element.Closed == false;
     });
   }
