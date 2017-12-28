@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Todo-App</h1>
     <!--<p v-for="task in tasks">{{task.Title}}</p>-->
-    <taskComponent v-for="task in tasks" :task="task"/>
+    <taskComponent v-for="task in filteredTasks" :task="task"/>
   </div>
 </template>
 
@@ -21,16 +21,29 @@ import TaskComponent from './components/Task.vue';
 })
 
 export default class Task extends Vue {
-  public tasks:any = [];
+  private tasks:any = [];
+  private filteredTasks:any = [];
+
+  private filterDefinition:any = {
+    ShowOnlyOpen: true
+  }
+
 
   mounted(){
     this.axios.get(Constants.api)
     .then((response) => {
       this.tasks = response.data;
+      this.filterTasks();
     })
     .catch((error) => {
       console.log(error);
     })
+  }
+
+  filterTasks(){
+    this.filteredTasks = this.tasks.filter((element, filter, array) => {
+      return element.Closed == false;
+    });
   }
 }
 </script>
