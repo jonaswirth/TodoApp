@@ -4,7 +4,7 @@
       <p>{{task.Title}} <i class="fas fa-pencil-alt"></i></p>
     </div>
     <div class="right">
-      <p><i class="fas fa-check"></i></p>
+      <p><i v-on:click="closeTask()" class="fas fa-check"></i></p>
     </div>
   </div>
 </template>
@@ -25,7 +25,15 @@ export default class TaskComponent extends Vue {
 @Prop()
 task:Task;
 
-
+closeTask(){
+  this.axios.put(Constants.api+"/close/"+this.task.TaskID)
+  .then(() => {
+    console.log("success");
+  })
+  .catch((error) =>{
+    console.log("error: " + error);
+  })
+}
 
 }
 </script>
@@ -51,9 +59,5 @@ div.left{
   float:left;
   overflow: hidden;
   text-align: left;
-}
-
-div.right{
-
 }
 </style>
