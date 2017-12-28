@@ -1,6 +1,11 @@
 <template>
   <div class="task">
-    <p>{{task.Title}}</p>
+    <div class="left">
+      <p>{{task.Title}} <i class="fas fa-pencil-alt"></i></p>
+    </div>
+    <div class="right">
+      <p><i class="fas fa-check"></i></p>
+    </div>
   </div>
 </template>
 
@@ -28,6 +33,7 @@ task:Task;
 <style>
 p {
   color:black;
+  font-size: 1.2em;
 }
 
 div.task{
@@ -36,5 +42,18 @@ div.task{
   max-width: 800px;
   border: 1px solid black;
   margin: 5px auto;
+  overflow: hidden;
+  padding: 3px;
+}
+
+div.left{
+  width: 80%;
+  float:left;
+  overflow: hidden;
+  text-align: left;
+}
+
+div.right{
+
 }
 </style>
