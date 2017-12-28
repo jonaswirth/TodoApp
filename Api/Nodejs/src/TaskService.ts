@@ -6,7 +6,14 @@ export default class TaskService{
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'todoapp'
+    database: 'todoapp',
+    typeCast: function castField(field, useDefaultTypeCasting){
+      if((field.type === "BIT") && (field.length === 1)){
+        var bit = field.string();
+        return ((bit === null) ? null : bit.charCodeAt(0)) == 1;
+      }
+      return(useDefaultTypeCasting());
+    }
   });
 
   constructor(){
