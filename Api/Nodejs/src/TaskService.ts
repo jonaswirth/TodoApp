@@ -6,7 +6,7 @@ export default class TaskService{
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'todoApp'
+    database: 'todoapp'
   });
 
   constructor(){
