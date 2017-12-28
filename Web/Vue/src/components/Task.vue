@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-//import Component from 'vue-class-component';
 import {Component, Prop} from 'vue-property-decorator';
 
 import Constants from '../constants.ts';

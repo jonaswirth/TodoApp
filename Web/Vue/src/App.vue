@@ -21,11 +21,9 @@ import TaskComponent from './components/Task.vue';
 })
 
 export default class Task extends Vue {
-  msg: string = "Hello World!"
   public tasks:any = [];
 
   mounted(){
-    console.log(Constants.api);
     this.axios.get(Constants.api)
     .then((response) => {
       this.tasks = response.data;
