@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1>Todo-App</h1>
-    <p v-for="task in tasks">{{task.Title}}</p>
+    <!--<p v-for="task in tasks">{{task.Title}}</p>-->
+    <taskComponent v-for="task in tasks" :task="task"/>
   </div>
 </template>
 
@@ -10,13 +11,13 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Constants from './constants.ts';
-//import Task from './components/Task.vue';
+import TaskComponent from './components/Task.vue';
 
 
 @Component({
-  /*components:{
-    Task
-  }*/
+  components:{
+    TaskComponent
+  }
 })
 
 export default class Task extends Vue {
