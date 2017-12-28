@@ -1,12 +1,13 @@
 import * as mysql from 'mysql'
 import Task from './Task'
+import DbConfig from './DbConfig'
 
 export default class TaskService{
   private connection:any = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'todoapp',
+    host: DbConfig.host,
+    user: DbConfig.user,
+    password: DbConfig.password,
+    database: DbConfig.database,
     typeCast: function castField(field, useDefaultTypeCasting){
       if((field.type === "BIT") && (field.length === 1)){
         var bit = field.string();
