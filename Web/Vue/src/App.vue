@@ -30,7 +30,6 @@ export default class Task extends Vue {
     this.axios.get(Constants.api)
     .then((response) => {
       this.tasks = response.data;
-      this.filterTasks();
     })
     .catch((error) => {
       console.log(error);

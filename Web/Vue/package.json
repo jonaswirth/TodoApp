@@ -15,7 +15,8 @@
     "vue": "^2.4.4",
     "vue-axios": "^2.0.2",
     "vue-class-component": "^6.1.1",
-    "vue-property-decorator": "^6.0.0"
+    "vue-property-decorator": "^6.0.0",
+    "vue-router": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
