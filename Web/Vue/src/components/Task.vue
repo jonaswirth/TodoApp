@@ -16,11 +16,8 @@ import {Component, Prop} from 'vue-property-decorator';
 import Constants from '../constants.ts';
 import Task from '../models/Task';
 
-@Component({
-  name: "taskComponent"
-})
-
-export default class TaskComponent extends Vue {
+@Component
+export default class Task extends Vue {
 @Prop()
 task:Task;
 

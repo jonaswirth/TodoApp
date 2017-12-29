@@ -3,7 +3,7 @@
     <h1>Todo-App</h1>
     <input type="checkbox" name="ShowOnlyOpen" v-model="ShowOnlyOpen"> Only show open Tasks
     <!--<p v-for="task in tasks">{{task.Title}}</p>-->
-    <taskComponent v-for="task in filteredTasks" :task="task"/>
+    <task v-for="task in filteredTasks" :task="task"/>
   </div>
 </template>
 
@@ -12,15 +12,14 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Constants from '../constants.ts';
-import TaskComponent from './Task.vue';
+import Task from './Task.vue';
 
 
 @Component({
   components:{
-    TaskComponent
+    Task
   }
 })
-
 export default class Index extends Vue {
   private tasks:any = [];
   private ShowOnlyOpen:boolean = true;
