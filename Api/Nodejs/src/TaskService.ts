@@ -58,7 +58,7 @@ export default class TaskService{
 
   public UpdateTask(task:Task, callback:any){
     let sql = "UPDATE tasks SET Title = ? WHERE TaskID = ?";
-    let inserts = [task.title, task.taskId];
+    let inserts = [task.Title, task.TaskID];
     sql = mysql.format(sql, inserts);
 
 

@@ -1,6 +1,6 @@
 export default class Task{
-  public taskId:number;
-  public title:string;
-  public created:Date;
-  public closed:boolean;
+  public TaskID:number;
+  public Title:string;
+  public Created:Date;
+  public Closed:boolean;
 }
