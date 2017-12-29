@@ -30,6 +30,19 @@ export default class TaskService{
     });
   }
 
+  public GetTask(id:number, callback:any){
+    let sql = "SELECT * FROM tasks WHERE TaskID = ?";
+    let params = [id];
+    sql = mysql.format(sql, params);
+
+    this.connection.query(sql, (error, results, fields) => {
+      if(error)
+        callback(error, null);
+      else
+        callback(null, results);
+    });
+  }
+
   public CreateTask(taskTitle:string, callback:any){
     let sql = "INSERT INTO tasks (Title) VALUES (?)";
     let inserts = [taskTitle];

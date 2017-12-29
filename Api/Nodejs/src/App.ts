@@ -27,6 +27,12 @@ class App{
       });
     });
 
+    router.get('/:id', (req, res) => {
+      this.taskService.GetTask(req.params.id, (err, result) => {
+        res.json(result);
+      });
+    });
+
     router.post('/create', (req, res) => {
       this.taskService.CreateTask(req.body.taskTitle, (err) => {
         if(err){
