@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add</h1>
+    <h1>Add new Task</h1>
   </div>
 </template>
 

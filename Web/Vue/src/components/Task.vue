@@ -1,7 +1,7 @@
 <template>
   <div class="task">
     <div class="left">
-      <p>{{task.Title}} <i class="fas fa-pencil-alt"></i></p>
+      <p>{{task.Title}} <router-link :to="'/edit/'+task.TaskID"><i class="fas fa-pencil-alt"></i></router-link></p>
     </div>
     <div class="right">
       <p><i v-on:click="closeTask()" class="fas fa-check"></i></p>

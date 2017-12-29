@@ -9,8 +9,8 @@ Vue.use(VueRouter);
 
 const routes = [
   {path:'/', component:Index},
-  {path:'/edit', component: Edit},
   {path:'/add', component:Add},
+  {path:'/edit/:id', component: Edit},
   {path:'*', redirect: '/'}
 ];
 
